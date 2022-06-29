@@ -4,6 +4,7 @@ This an internship for Algoriza company
 
 ## Starting With 
 1st day : onboarding Screen
+2nd day : Register & login Ui screens without any logic
 
 
 ## Getting Started
