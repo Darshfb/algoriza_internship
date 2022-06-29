@@ -9,14 +9,14 @@ class DefaultTextButton extends StatelessWidget {
     this.color,
   }) : super(key: key);
   final String text;
-  final VoidCallback? onPressed;
+  final VoidCallback onPressed;
   final bool? isUpperCase;
   final Color? color;
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed: onPressed,
       child: Text(
         isUpperCase == true ? text.toUpperCase() : text,
         style: TextStyle(

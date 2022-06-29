@@ -2,6 +2,10 @@
 
 This an internship for Algoriza company
 
+## Starting With 
+1st day : onboarding Screen
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

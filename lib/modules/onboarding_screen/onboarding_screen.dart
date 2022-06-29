@@ -3,7 +3,7 @@ import 'package:algoriza_internship/modules/onboarding_screen/onboarding_models.
 import 'package:algoriza_internship/modules/register/register_screen.dart';
 import 'package:algoriza_internship/shared/component/default_button.dart';
 import 'package:algoriza_internship/shared/component/default_text_button.dart';
-import 'package:dots_indicator/dots_indicator.dart';
+import 'package:algoriza_internship/shared/component/navigate_to.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -21,19 +21,19 @@ List<OnBoardingModels> boarding = [
     image: 'assets/images/onboarding1.svg',
     title: 'Get food deliver to your doorstep asap',
     body:
-        'We have young and professional deliver team that will bring your food as soon as possible to your doorstep',
+    'We have young and professional deliver team that will bring your food as soon as possible to your doorstep',
   ),
   OnBoardingModels(
     image: 'assets/images/onboarding2.svg',
     title: 'Buy Any Food from your favorite restaurant',
     body:
-        'We are constantly adding favourite restaurant throughout the territory and around your area carefully selected',
+    'We are constantly adding favourite restaurant throughout the territory and around your area carefully selected',
   ),
   OnBoardingModels(
     image: 'assets/images/onboarding3.svg',
     title: 'Get food deliver to your doorstep asap',
     body:
-        'We have young and professional deliver team that will bring your food as soon as possible to your doorstep',
+    'We have young and professional deliver team that will bring your food as soon as possible to your doorstep',
   ),
 ];
 bool isLast = false;
@@ -58,10 +58,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   child: DefaultTextButton(
                     text: 'skip',
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LoginScreen()));
+                      navigateWithoutBack(
+                        context: context,
+                        widget:  LoginScreen(),);
                     },
                     isUpperCase: true,
                     color: Colors.black,
@@ -91,7 +90,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           const Center(
                             child: Image(
                               image:
-                                  AssetImage('assets/images/7krave-logo.png'),
+                              AssetImage('assets/images/7krave-logo.png'),
                               height: 90,
                               width: 100,
                               fit: BoxFit.cover,
@@ -99,7 +98,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           ),
                           SvgPicture.asset(
                             boarding[index].image,
-                            height: MediaQuery.of(context).size.height / 3.5,
+                            height: MediaQuery
+                                .of(context)
+                                .size
+                                .height / 3.5,
                           ),
                           const SizedBox(
                             height: 10.0,
@@ -117,7 +119,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           ),
                           Text(
                             boarding[index].body,
-                            style: Theme.of(context)
+                            style: Theme
+                                .of(context)
                                 .textTheme
                                 .caption!
                                 .copyWith(fontSize: 14),
@@ -148,19 +151,17 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 text: 'Get Started',
                 height: 46,
                 onPressed: () {
-                  controller
-                      .nextPage(
-                    duration: const Duration(milliseconds: 500),
-                    curve: Curves.fastLinearToSlowEaseIn,
-                  )
-                      .then((value) {
-                    if (isLast) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LoginScreen()));
-                    }
-                  });
+                  if (isLast) {
+                    navigateWithoutBack(
+                      context: context,
+                      widget:  LoginScreen(),);
+                  } else {
+                    controller
+                        .nextPage(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.fastLinearToSlowEaseIn,
+                    );
+                  }
                 },
                 backgroundColor: Colors.teal.shade300,
                 width: double.infinity,
@@ -176,10 +177,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   DefaultTextButton(
                     text: 'Sign Up',
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => RegisterScreen(),));
+                      navigateWithoutBack(
+                          context: context,
+                          widget:  const RegisterScreen(),);
                     },
                   ),
                 ],
